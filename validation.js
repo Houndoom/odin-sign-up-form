@@ -1,26 +1,32 @@
+/* Perform lazy validation until an error is triggered on unfocus
+ * Change to aggressive validation until error is fixed
+ * Revert to lazy validation */
+
 const allInput = document.querySelectorAll("input");
 
-allInput.forEach(e => e.addEventListener('blur', validateInput));
+allInput.forEach(e => e.addEventListener('blur', validateInput)); // Add lazy validation to all inputs
 
 function validateInput() {
   const errorMessage = this.nextElementSibling;
+  // If input is invalid, activate error formatting and change to aggressive validation
   if (!this.validity.valid) {
-    errorMessage.classList.add("with-error");
+    errorMessage.textContent = "* Please enter a valid value";
     this.classList.add("error");
     toAggressive(this, validateInput);
   } else {
-    errorMessage.classList.remove("with-error");
+    // If input is valid, remove error formatting and change back to lazy validation
+    errorMessage.textContent = "";
     this.classList.remove("error");
     toLazy(this,validateInput);
+    if (this.id == "password" || this.id == "confirm-password") validatePasswordMatch();
   }
   return;
 }
 
+// Additional validation that the two password fields should match
+
 const pw = document.getElementById("password");
 const confirmPw = document.getElementById("confirm-password");
-
-pw.addEventListener('blur', validatePasswordMatch);
-confirmPw.addEventListener('blur', validatePasswordMatch);
 
 function validatePasswordMatch() {
   const pwError = pw.nextElementSibling;
@@ -28,14 +34,12 @@ function validatePasswordMatch() {
 
   if (pw.validity.valid && confirmPw.validity.valid && pw.value != confirmPw.value) {
     confirmPwError.textContent = "* Passwords do not match";
-    confirmPwError.classList.add("with-pw-error");
     confirmPw.classList.add("pw-error");
     pw.classList.add("pw-error");
     toAggressive(pw, validatePasswordMatch);
     toAggressive(confirmPw, validatePasswordMatch);
   } else if (pw.validity.valid && confirmPw.validity.valid) {
-    confirmPwError.textContent = "* Please type in a valid password";
-    confirmPwError.classList.remove("with-pw-error");
+    confirmPwError.textContent = "";
     confirmPw.classList.remove("pw-error");
     pw.classList.remove("pw-error");
     toLazy(pw, validatePasswordMatch);

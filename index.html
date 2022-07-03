@@ -22,38 +22,49 @@
     </div>
     <div id="form-div">
       <p>Let's do this!</p>
-      <form>
-        <div class="field">
-          <label for="first-name">FIRST NAME</label>
-          <input type="text" id="first-name">
-          <div class="error-msg">* Please enter your first name</div>
+      <div id="form-pw-rules">
+        <form novalidate>
+          <div class="field">
+            <label for="first-name">FIRST NAME</label>
+            <input type="text" id="first-name">
+            <div class="error-msg"></div>
+          </div>
+          <div class="field">
+            <label for="last-name">LAST NAME</label>
+            <input type="text" id="last-name">
+            <div class="error-msg"></div>
+          </div>
+          <div class="field">
+            <label for="email">EMAIL<abbr title="Required">*</abbr></label>
+            <input type="email" id="email" required>
+            <div class="error-msg"></div>
+          </div>
+          <div class="field">
+            <label for="phone-number">PHONE NUMBER</label>
+            <input type="tel" id="phone-number">
+            <div class="error-msg"></div>
+          </div>
+          <div class="field">
+            <label for="password">PASSWORD<abbr title="Required">*</abbr></label>
+            <input type="password" id="password" required pattern="(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])\w{8,}">
+            <div class="error-msg"></div>
+          </div>
+          <div class="field">
+            <label for="confirm-password">CONFIRM PASSWORD<abbr title="Required">*</abbr></label>
+            <input type="password" id="confirm-password" required pattern="(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])\w{8,}">
+            <div class="error-msg"></div>
+          </div>
+        </form>
+        <div id="password-rules">
+          Password should contain at least
+          <ul>
+            <li>8 alphanumeric characters</li>
+            <li>1 capital letter</li>
+            <li>1 small letter</li>
+            <li>1 number</li>
+          </ul>
         </div>
-        <div class="field">
-          <label for="last-name">LAST NAME</label>
-          <input type="text" id="last-name">
-          <div class="error-msg">* Please enter your last name</div>
-        </div>
-        <div class="field">
-          <label for="email">EMAIL</label>
-          <input type="email" id="email" required>
-          <div class="error-msg">* Please enter a valid email address</div>
-        </div>
-        <div class="field">
-          <label for="phone-number">PHONE NUMBER</label>
-          <input type="tel" id="phone-number">
-          <div class="error-msg">* Please enter a valid phone number</div>
-        </div>
-        <div class="field">
-          <label for="password">PASSWORD</label>
-          <input type="password" id="password" required>
-          <div class="error-msg">* Please enter a valid password</div>
-        </div>
-        <div class="field">
-          <label for="confirm-password">CONFIRM PASSWORD</label>
-          <input type="password" id="confirm-password" required>
-          <div class="error-msg">* Please enter a valid password</div>
-        </div>
-      </form>
+      </div>
     </div>
     <div id="submit">
       <button type="submit">Create Account</button>

@@ -69,12 +69,12 @@ body {
 #main {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: max(100%, 700px);
 }
 
 #main > * {
   flex: 1;
-  padding: 0 40vh 0 10vh;
+  padding: 0 20vh 0 10vh;
 }
 
 /* Hero */
@@ -137,11 +137,21 @@ form {
 
 .error-msg {
   font-size: 0.7rem;
-  color: white;
+  color: red;
+  height: 0.7rem;
 }
 
-.with-error, .with-pw-error{
-  color: red;
+#form-pw-rules {
+  display: flex;
+  gap: 5vw;
+  align-items: center;
+  font-size: max(1vw,12px);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
 }
 
 /* Submit */
