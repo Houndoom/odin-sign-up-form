@@ -23,51 +23,51 @@
     <div id="form-div">
       <p>Let's do this!</p>
       <div id="form-pw-rules">
-        <form novalidate>
+        <form novalidate id="sign-up-form" action="">
           <div class="field">
             <label for="first-name">FIRST NAME</label>
-            <input type="text" id="first-name">
+            <input type="text" id="first-name" name="first-name">
             <div class="error-msg"></div>
           </div>
           <div class="field">
             <label for="last-name">LAST NAME</label>
-            <input type="text" id="last-name">
+            <input type="text" id="last-name" name="last-name">
             <div class="error-msg"></div>
           </div>
           <div class="field">
             <label for="email">EMAIL<abbr title="Required">*</abbr></label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" name="email" required>
             <div class="error-msg"></div>
           </div>
           <div class="field">
-            <label for="phone-number">PHONE NUMBER</label>
-            <input type="tel" id="phone-number">
+            <label for="phone-number">PHONE NUMBER (9 DIGITS)</label>
+            <input type="tel" id="phone-number" name="phone-number" pattern="\d{9}">
             <div class="error-msg"></div>
           </div>
           <div class="field">
             <label for="password">PASSWORD<abbr title="Required">*</abbr></label>
-            <input type="password" id="password" required pattern="(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])\w{8,}">
+            <input type="password" id="password" name="password" required pattern="(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])\w{8,}">
             <div class="error-msg"></div>
           </div>
           <div class="field">
             <label for="confirm-password">CONFIRM PASSWORD<abbr title="Required">*</abbr></label>
-            <input type="password" id="confirm-password" required pattern="(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])\w{8,}">
+            <input type="password" id="confirm-password" name="confirm-password" required pattern="(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])\w{8,}">
             <div class="error-msg"></div>
           </div>
         </form>
         <div id="password-rules">
-          Password should contain at least
+          Password should contain
           <ul>
             <li>8 alphanumeric characters</li>
-            <li>1 capital letter</li>
-            <li>1 small letter</li>
-            <li>1 number</li>
+            <li>at least 1 capital letter</li>
+            <li>at least 1 small letter</li>
+            <li>at least 1 number</li>
           </ul>
         </div>
       </div>
     </div>
     <div id="submit">
-      <button type="submit">Create Account</button>
+      <button type="submit" form="sign-up-form">Create Account</button>
       <div>Already have an account? <a href="#">Log in</a></div>
     </div>
   </div>

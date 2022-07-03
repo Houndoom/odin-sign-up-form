@@ -4,23 +4,24 @@
 
 const allInput = document.querySelectorAll("input");
 
-allInput.forEach(e => e.addEventListener('blur', validateInput)); // Add lazy validation to all inputs
+allInput.forEach(e => e.addEventListener('blur', () => validateInput(e))); // Add lazy validation to all inputs
 
-function validateInput() {
-  const errorMessage = this.nextElementSibling;
+function validateInput(input) {
+  const errorMessage = input.nextElementSibling;
   // If input is invalid, activate error formatting and change to aggressive validation
-  if (!this.validity.valid) {
+  if (!input.validity.valid) {
     errorMessage.textContent = "* Please enter a valid value";
-    this.classList.add("error");
-    toAggressive(this, validateInput);
+    input.classList.add("error");
+    toAggressive(input, () => validateInput(input));
+    return 1;
   } else {
     // If input is valid, remove error formatting and change back to lazy validation
     errorMessage.textContent = "";
-    this.classList.remove("error");
-    toLazy(this,validateInput);
-    if (this.id == "password" || this.id == "confirm-password") validatePasswordMatch();
+    input.classList.remove("error");
+    toLazy(input, () => validateInput(input));
+    if (input.id == "password" || input.id == "confirm-password") validatePasswordMatch();
+    return 0;
   }
-  return;
 }
 
 // Additional validation that the two password fields should match
@@ -38,14 +39,16 @@ function validatePasswordMatch() {
     pw.classList.add("pw-error");
     toAggressive(pw, validatePasswordMatch);
     toAggressive(confirmPw, validatePasswordMatch);
+    return 1;
   } else if (pw.validity.valid && confirmPw.validity.valid) {
     confirmPwError.textContent = "";
     confirmPw.classList.remove("pw-error");
     pw.classList.remove("pw-error");
     toLazy(pw, validatePasswordMatch);
     toLazy(confirmPw, validatePasswordMatch);
+    return 0;
   }
-  return;
+  return 1;
 }
 
 function toAggressive(e, func) {
@@ -59,3 +62,13 @@ function toLazy(e, func) {
   e.addEventListener("blur", func);
   return;
 }
+
+/* Validate on form submission */
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+  let errors = 0;
+  allInput.forEach(f => errors += validateInput(f)); // validateInput returns 1 if error, so this counts errors
+  if (errors > 0) e.preventDefault(); // Prevent form submission if there are errors
+})
