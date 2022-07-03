@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "Norse Bold";
+  src: url("fonts/Norse-Bold.otf");
+}
+
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+} 
+
+body {
+  display: flex;
+}
+
+#background {
+  background-image: url("images/husky.jpg");
+  background-size: auto 100vh;
+  height: 100vh;
+  width: 66vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+#logo {
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  top: 30vh;
+  font-family: 'Norse Bold', sans-serif;
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: rgba(89, 90, 72, 0.3);
+  padding: 20px;
+}
+
+#odin-logo {
+  width: 4rem;
+  height: auto;
+}
+
+#photo-credit {
+  margin: 5px auto;
+  font-size: 0.8rem;
+  color: white;
+}
