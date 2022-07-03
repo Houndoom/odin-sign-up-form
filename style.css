@@ -1,5 +1,5 @@
 :root {
-  --window-min-height: 500px;
+  --window-min-height: 620px;
   --bg-aspect-ratio: calc(3456/5184);
   --window-width: calc(var(--bg-aspect-ratio)*100vh);
   --window-min-width: calc(var(--bg-aspect-ratio)*var(--window-min-height));
@@ -93,13 +93,25 @@ body {
   padding-bottom: 20px;
   margin-bottom: 5px;
   box-shadow: 1px 5px 10px #CCCCCC;
-  max-height: 230px;
-  /* border-bottom: 3px solid rgb(220,220,220); */
+  max-height: 250px;
 }
 
 p {
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+input {
+  border: 1px solid #E5E7EB;
+  border-radius: 3px;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus:not(.error):not(.pw-error) {
+  border-color: blue;
+  box-shadow: 2px 2px 3px #CCCCCC;
 }
 
 .field {
@@ -116,7 +128,20 @@ form {
   display: grid;
   grid-template-columns: repeat(2,200px);
   column-gap: 50px;
-  row-gap: 20px;
+  row-gap: 10px;
+}
+
+.error, .pw-error{
+  border-color: red;
+}
+
+.error-msg {
+  font-size: 0.7rem;
+  color: white;
+}
+
+.with-error, .with-pw-error{
+  color: red;
 }
 
 /* Submit */

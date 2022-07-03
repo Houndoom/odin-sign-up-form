@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+  <script src="validation.js" defer></script>
 </head>
 <body>
   <div id="background">
@@ -25,31 +26,37 @@
         <div class="field">
           <label for="first-name">FIRST NAME</label>
           <input type="text" id="first-name">
+          <div class="error-msg">* Please enter your first name</div>
         </div>
         <div class="field">
           <label for="last-name">LAST NAME</label>
           <input type="text" id="last-name">
+          <div class="error-msg">* Please enter your last name</div>
         </div>
         <div class="field">
           <label for="email">EMAIL</label>
-          <input type="email" id="email">
+          <input type="email" id="email" required>
+          <div class="error-msg">* Please enter a valid email address</div>
         </div>
         <div class="field">
           <label for="phone-number">PHONE NUMBER</label>
           <input type="tel" id="phone-number">
+          <div class="error-msg">* Please enter a valid phone number</div>
         </div>
         <div class="field">
           <label for="password">PASSWORD</label>
-          <input type="pw" id="password">
+          <input type="password" id="password" required>
+          <div class="error-msg">* Please enter a valid password</div>
         </div>
         <div class="field">
           <label for="confirm-password">CONFIRM PASSWORD</label>
-          <input type="text" id="confirm-password">
+          <input type="password" id="confirm-password" required>
+          <div class="error-msg">* Please enter a valid password</div>
         </div>
       </form>
     </div>
     <div id="submit">
-      <button>Create Account</button>
+      <button type="submit">Create Account</button>
       <div>Already have an account? <a href="#">Log in</a></div>
     </div>
   </div>
