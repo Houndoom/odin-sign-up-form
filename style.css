@@ -91,7 +91,10 @@ body {
 
 #form-div {
   padding-bottom: 20px;
-  max-height: 220px;
+  margin-bottom: 5px;
+  box-shadow: 1px 5px 10px #CCCCCC;
+  max-height: 230px;
+  /* border-bottom: 3px solid rgb(220,220,220); */
 }
 
 p {
