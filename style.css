@@ -1,3 +1,10 @@
+:root {
+  --window-min-height: 500px;
+  --bg-aspect-ratio: calc(3456/5184);
+  --window-width: calc(var(--bg-aspect-ratio)*100vh);
+  --window-min-width: calc(var(--bg-aspect-ratio)*var(--window-min-height));
+}
+
 @font-face {
   font-family: "Norse Bold";
   src: url("fonts/Norse-Bold.otf");
@@ -14,16 +21,21 @@ body {
   display: flex;
 }
 
+/* Background */
+
 #background {
   background-image: url("images/husky.jpg");
-  background-size: auto 100vh;
+  background-size: max(var(--window-width), var(--window-min-width)) max(100vh,var(--window-min-height));
   height: 100vh;
-  width: 66vh;
+  min-height: var(--window-min-height);
+  min-width: var(--window-min-width);
+  width: max(var(--window-width),var(--window-min-width));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   position: relative;
+  flex-shrink: 0;
 }
 
 #logo {
@@ -50,4 +62,79 @@ body {
   margin: 5px auto;
   font-size: 0.8rem;
   color: white;
+}
+
+/* Right Hand Side */
+
+#main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#main > * {
+  flex: 1;
+  padding: 0 40vh 0 10vh;
+}
+
+/* Hero */
+
+#hero {
+  background-color: rgb(240,240,240);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 5vh;
+}
+
+/* Form */
+
+#form-div {
+  padding-bottom: 20px;
+  max-height: 220px;
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  letter-spacing: 1px;
+  font-size: 0.7rem;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2,200px);
+  column-gap: 50px;
+  row-gap: 20px;
+}
+
+/* Submit */
+
+#submit {
+  background-color: rgb(240,240,240);
+}
+
+button {
+  background-color: darkolivegreen;
+  width: 175px;
+  height: 40px;
+  color: white;
+  border: 1px solid darkolivegreen;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 30px 0px;
+}
+
+a:link {
+  color: darkolivegreen;
+  text-decoration: none;
 }
